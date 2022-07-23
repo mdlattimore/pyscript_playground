@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="A simple mortgage calculator powered by the
+    'very alpha' PyScript framework. See https://pyscript.net and 
+    https://github.com/pyscript/pyscript">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,7 +74,10 @@
             </div>
             <div id="div2">
                 <h3>Total Monthly Payment</h3>
-                <p id="payment"></p>
+                <p id="pandi"></p>
+                <p id="prop_taxes"></p>
+                <p id="hoi"></p>
+                <p id="total"></p>
             </div>
         </div>
         <py-script>
@@ -94,9 +100,12 @@
                 taxes = float(Element('taxes').value)
                 insurance = float(Element('insurance').value)
 
-                p_and_i = monthly_payment(l, i, term)
+                p_and_i = round(monthly_payment(l, i, term), 2)
                 total_payment = p_and_i + round(taxes/12, 2) + round(insurance/12, 2)
-                Element('payment').write(f"${total_payment:.2f}")
+                Element('pandi').write(f"Principal and Interest: ${p_and_i:.2f}")
+                Element('prop_taxes').write(f"Property Taxes: ${round(taxes/12, 2):.2f}")
+                Element('hoi').write(f"Insurance: ${round(insurance/12, 2):.2f}")
+                Element('total').write(f"Total Payment: ${total_payment}")
                 console.log("Hey")
         
         </py-script>
