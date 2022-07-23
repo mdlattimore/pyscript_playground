@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play time</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <style>
+        body {
+            padding: 25px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-size: revert;
+        }
+        input {
+            padding-left: 5px;
+        }
+        #div1, #div2 {
+            width: 40%;
+            float: left;
+            margin-right:20px;
+            background-color: lightgray;
+            padding:10px;
+        }
+        #wrapper {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+        
+    </style>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+    <body>
+        <py-title>Temperature Converter</py-title>
+        <div id="wrapper">
+        <div id="div1">
+        <form onsubmit="return false">
+        
+            <label for="temp">Temperature Fahrenheit ...</label>
+            <input type="text" id="temp" name="temp" style="outline: solid;" autofocus><br>
+            <br>
+            <input pys-onClick="sub" type="submit" id="btn-form" value="Convert!">
+        
+        </form>
+        
+        <p id="celsius"></p>
+        </div>
+
+        <div id="div2">
+            <p>When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another, and to assume among the powers of the earth, the separate and equal station to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation. We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.</p>
+        </div>
+        </div>
+        <py-script>
+        
+            def sub(*args, **kwargs):
+                temp = float(Element('temp').value)
+                cels = (temp - 32) * (5 / 9)
+                result_place = Element("celsius")
+                result_place.write(f"{cels:.2f} degrees celsius")
+        
+        </py-script>
+        
+
+    </body>
+</html>

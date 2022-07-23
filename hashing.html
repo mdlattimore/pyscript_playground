@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play time</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <style>
+        body {
+            padding: 25px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-size: revert;
+        }
+        input {
+            padding-left: 5px;
+        }
+    </style>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+    <body>
+        <py-title>Hasher</py-title>
+        
+        <form onsubmit="return false">
+        
+            <label for="entry">Enter text: </label>
+            <input type="text" id="entry" name="entry" style="outline: solid;" autofocus><br>
+            <br>
+            <input pys-onClick="hash" type="submit" id="btn-form" value="Hash">
+            
+        </form>
+        <br>
+        <p id="result"></p>
+
+        <py-script>
+            import hashlib
+
+            def hash(text):
+                a = Element('entry').value
+                hashed_text = hashlib.sha256(a.encode('utf-8')).hexdigest()
+                result_place = Element("result")
+                result_place.write(f"{hashed_text}")
+            
+            
+        
+        </py-script>
+        
+
+    </body>
+</html>

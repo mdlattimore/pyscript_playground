@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+        - cryptography
+    </py-env>
+    <style>
+        body {
+            padding: 25px;
+            background-color: whitesmoke;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-size: revert;
+        }
+        input {
+            padding-left: 5px;
+        }
+        label, textarea {
+            display: block;
+        }
+
+    </style>
+</head>
+
+    <body>
+        <py-title>Encrypt</py-title>
+        
+        <form onsubmit="return false">
+            
+            <label id="enter" for="entry">Enter text: </label>
+            <textarea type="text" id="entry" name="entry" rows="5" cols="80" style="outline: solid; padding: 5px" autofocus></textarea>
+            <br>
+            
+            <input pys-onClick="encrypt" type="submit" id="btn-form" value="Encrypt" style="background: lightblue; padding: 0px 5px 0px 5px; border-radius:2px;">
+            
+        </form>
+        <br>
+        <p id="key"></p>
+        <br>
+        <p id="result" style="word-wrap: break-word"></p>
+      
+        <py-script>
+        
+            from cryptography.fernet import Fernet
+
+            def encrypt(text):
+                clear_text = Element('entry').value
+                key = Fernet.generate_key()
+                f = Fernet(key)
+                encrypted_text = f.encrypt(clear_text.encode('utf-8'))
+                Element('key').write(f"Key: {key}")
+                Element('result').write(f"Encrypted message: {encrypted_text}")
+
+        </py-script>
+        
+
+    </body>
+</html>

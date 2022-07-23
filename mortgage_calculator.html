@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <style>
+        body {
+            padding: 25px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-size: revert;
+        }
+        input {
+            padding-left: 5px;
+        }
+        #div1, #div2 {
+            float: left;
+            background-color: lightgray;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        #div1 {
+            width: 55%;
+            margin-right: 10px;
+        }
+        #div2 {
+            width: 35%;
+        }
+        #wrapper {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btn-form {
+            padding:5px;
+            border-radius: 5px;
+            background-color: white;
+        }
+    </style>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+    <body>
+        <py-title>Mortgage Calculator</py-title>
+        <div id="wrapper">
+            <div id="div1">
+                <form onsubmit="return false">
+                
+                    <label for="loan_amount">Loan Amount:&nbsp;&nbsp;</label>
+                    <input type="text" id="loan_amount" name="loan_amount" style="outline: solid;" autofocus><br>
+                    <br>
+                    <label for="interest">Interest Rate:&nbsp;&nbsp;</label>
+                    <input type="text" id="interest" name="interest" style="outline: solid;"><br>
+                    <br>
+                    <label for="term">Loan Term (in months):&nbsp;&nbsp;</label>
+                    <input type="text" id="term" name="term" style="outline: solid;"><br>
+                    <br>
+                    <label for="taxes">Annual Property Taxes:&nbsp;&nbsp;</label>
+                    <input type="text" id="taxes" name="taxes" style="outline: solid;" value="0"><br>
+                    <br>
+                    <label for="insurance">Annual Insurance Premium:&nbsp;&nbsp;</label>
+                    <input type="text" id="insurance" name="insurance" style="outline: solid;" value="0"><br>
+                    <br>
+
+                    <input pys-onClick="calculate" type="submit" id="btn-form" value="Calculate Payment">
+                </form>            
+            </div>
+            <div id="div2">
+                <h3>Total Monthly Payment</h3>
+                <p id="payment"></p>
+            </div>
+        </div>
+        <py-script>
+
+            def calculate(*args, **kwargs):
+
+                def monthly_payment(loan_amount, interest_rate, term):
+                    """ A helper function to the amortization function. """
+                    l = loan_amount
+                    i = (float(interest_rate) / 12) / 100 
+                    t = term
+                    # Formula for calculating the principal and interest payment for an 
+                    # amortized loan
+                    payment = (l * (i * (1 + i) ** t) / ((1 + i) ** t - 1)) 
+                    return round(payment, 2)
+
+                l = float(Element('loan_amount').value)
+                i = float(Element('interest').value)
+                term = int(Element('term').value)
+                taxes = float(Element('taxes').value)
+                insurance = float(Element('insurance').value)
+
+                p_and_i = monthly_payment(l, i, term)
+                total_payment = p_and_i + round(taxes/12, 2) + round(insurance/12, 2)
+                Element('payment').write(f"${total_payment:.2f}")
+                console.log("Hey")
+        
+        </py-script>
+    </body>
+</html>
