@@ -39,11 +39,12 @@
         #div2 {
             width: 35%;
         }
-        #wrapper {
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+        #btn-form {
+            padding:5px;
+            border-radius: 5px;
+            background-color: white;
         }
+
  
     </style>
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
@@ -73,7 +74,7 @@
                         <input type="text" id="insurance" name="insurance" style="outline: solid;" value="0" class="form-control"><br>
                         <br>
 
-                        <input pys-onClick="calculate" type="submit" class="btn btn-light" value="Calculate Payment" >
+                        <input pys-onClick="calculate" type="submit" id="btn-form" value="Calculate Payment">
                     </form>            
                 </div>
                 <div class="col-sm-4 content-box">
@@ -107,8 +108,8 @@
                     p_and_i = monthly_payment(l, i, term)
                     total_payment = p_and_i + round(taxes/12, 2) + round(insurance/12, 2)
                     Element('pandi').write(f"Principal and Interest: ${p_and_i:.2f}")
-                    Element('prop_taxes').write(f"Taxes: ${round(taxes/12, 2)}")
-                    Element('hoi').write(f"Insurance: ${round(insurance/12, 2)}")
+                    Element('prop_taxes').write(f"Taxes: ${round(taxes/12, 2):.2f}")
+                    Element('hoi').write(f"Insurance: ${round(insurance/12, 2):.2f}")
                     Element('total_pmt').write(f"Total Payment: ${total_payment:.2f}")
 
                     console.log("Hey")
