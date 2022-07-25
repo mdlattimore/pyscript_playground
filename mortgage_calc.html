@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            padding: 25px;
+            background-color: aliceblue;
+        }
+
+        h1 {
+            font-size: revert;
+            text-align: center;
+        }
+        h2 {
+            font-size: revert;
+        }
+        input {
+            padding-left: 5px;
+        }
+        .content-box {
+            float: left;
+            background-color: rgb(166, 186, 228);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        #div1 {
+            width: 55%;
+            margin-right: 10px;
+        }
+        #div2 {
+            width: 35%;
+        }
+        #btn-form {
+            padding:5px;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+        }
+
+ 
+    </style>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+    <body>
+        <div class="container">
+            <h1>Mortgage Calculator</h1>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4 content-box">
+                    <form onsubmit="return false">
+                    
+                        <label for="loan_amount" class="form-label">Loan Amount:&nbsp;&nbsp;</label><br>
+                        <input type="text" id="loan_amount" name="loan_amount" style="outline: solid;" class="form-control" autofocus><br>
+                        
+                        <label for="interest" class="form-label">Interest Rate:&nbsp;&nbsp;</label><br>
+                        <input type="text" id="interest" name="interest" style="outline: solid;" class="form-control"><br>
+                        
+                        <label for="term" class="form-label">Loan Term (in months):&nbsp;&nbsp;</label><br>
+                        <input type="text" id="term" name="term" style="outline: solid;" class="form-control"><br>
+                        
+                        <label for="taxes" class="form-label">Annual Property Taxes:&nbsp;&nbsp;</label><br>
+                        <input type="text" id="taxes" name="taxes" style="outline: solid;" value="0" class="form-control"><br>
+                        
+                        <label for="insurance" class="form-label">Annual Insurance Premium:&nbsp;&nbsp;</label><br>
+                        <input type="text" id="insurance" name="insurance" style="outline: solid;" value="0" class="form-control"><br>
+                        <br>
+
+                        <input pys-onClick="calculate" type="submit" id="btn-form" value="Calculate Payment">
+                    </form>            
+                </div>
+                <div class="col-sm-4 content-box">
+                    <h2>Total Monthly Payment</h2>
+                    <p id="pandi"></p>
+                    <p id="prop_taxes"></p>
+                    <p id="hoi"></p>
+                    <p id="total_pmt"></p>
+                </div>
+            </div>
+            <py-script>
+
+                def calculate(*args, **kwargs):
+
+                    def monthly_payment(loan_amount, interest_rate, term):
+                        """ A helper function to the amortization function. """
+                        l = loan_amount
+                        i = (float(interest_rate) / 12) / 100 
+                        t = term
+                        # Formula for calculating the principal and interest payment for an 
+                        # amortized loan
+                        payment = (l * (i * (1 + i) ** t) / ((1 + i) ** t - 1)) 
+                        return round(payment, 2)
+
+                    l = float(Element('loan_amount').value)
+                    i = float(Element('interest').value)
+                    term = int(Element('term').value)
+                    taxes = float(Element('taxes').value)
+                    insurance = float(Element('insurance').value)
+
+                    p_and_i = monthly_payment(l, i, term)
+                    total_payment = p_and_i + round(taxes/12, 2) + round(insurance/12, 2)
+                    Element('pandi').write(f"Principal and Interest: ${p_and_i:.2f}")
+                    Element('prop_taxes').write(f"Taxes: ${round(taxes/12, 2):.2f}")
+                    Element('hoi').write(f"Insurance: ${round(insurance/12, 2):.2f}")
+                    Element('total_pmt').write(f"Total Payment: ${total_payment:.2f}")
+
+                    console.log("Hey")
+            
+            </py-script>
+        </div>
+    </body>
+</html>
