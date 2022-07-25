@@ -1,1 +1,2 @@
-[Mortgage Calculator](./mortgage_calc.html)
+[Mortgage Calculator](https://mdlattimore.github.io/pyscript_playground/mortgage_calc)
+
