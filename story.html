@@ -16,10 +16,25 @@
 <body>
 <div class="container">
 
-  
+    <py-box id="narrative" widths="2/3">
+        <div id="main_text"></div>
+    </py-box>
+    <input type="submit" id="submit" value="Click Me" onClick="display"> 
 
 </div>
     
+<py-script>
+   
+    
+    def display():
+        import time
+        for x in range(10):
+            document.getElementById('main_text').innerHTML = x
+            time.sleep(1)
+    display()        
+
+
+</py-script>
 
 </body>
 </html>

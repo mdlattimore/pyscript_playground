@@ -1,7 +1,7 @@
-body {
-    padding: 25px;
+.navbar {
+    background-color: rgb(142, 242, 232);
+    margin-right: 0%;
+    margin-left: 0%;
 }
 
-h1, h2, h3, h4, h5 {
-    font-size: revert;
-}
+

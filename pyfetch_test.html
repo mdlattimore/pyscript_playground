@@ -18,9 +18,9 @@
         <h1>PyScript - HTTP Requests pyfetch</h1>
         <form onsubmit="return false">
             <label for="breed">Enter breed</label><br>
-            <input type="text" id="breed" name="breed"><br>
+            <input type="text" id="breed" name="breed" style="outline:solid"><br><br>
             
-            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup">Search Breed</button>
+            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search Breed</button>
         </form>
         <div id="request_output"></div>
         <br>
@@ -39,7 +39,8 @@ async def lookup(*args, **kwargs):
     response = await pyfetch(url=f"https://api.thedogapi.com/v1/breeds/search?q={query}", method="GET")
 
     x = await response.json()
-    Element('request_output').write(x)
+    <!-- Element('request_output').write(x) -->
+    document.getElementById('request_output').innerHTML = x
 
 
 
