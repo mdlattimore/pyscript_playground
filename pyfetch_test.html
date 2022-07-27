@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+         <style>
+            h1 {
+                font-size: 20px; 
+                color: green; 
+                text-transform: uppercase;
+                text-align: center; 
+                margin: 0 0 35px 0; 
+                text-shadow: 0px 1px 0px #f2f2f2;
+            }
+        </style>
+    </head>
+    <body style='font-size: 20px;'>
+        <h1>PyScript - HTTP Requests pyfetch</h1>
+        <form onsubmit="return false">
+            <label for="breed">Enter breed</label><br>
+            <input type="text" id="breed" name="breed"><br>
+            
+            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup">Search Breed</button>
+        </form>
+        <div id="request_output"></div>
+        <br>
+        <pre id="detail"></pre>
+        <br>
+        <p id="searchterm"></p>
+        
+    <py-script>
+
+from pyodide.http import pyfetch
+import asyncio
+
+
+async def lookup(*args, **kwargs):
+    query = document.getElementById('breed').value
+    response = await pyfetch(url=f"https://api.thedogapi.com/v1/breeds/search?q={query}", method="GET")
+
+    x = await response.json()
+    Element('request_output').write(x)
+
+
+
+
+       
+    </py-script>
+    </body>
+</html>
