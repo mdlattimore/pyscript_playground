@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page</title>
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    </head>
+
+    <body>
+        <h1>innerHTML - PS</h1>
+        <form onsubmit="return false">   
+            <button class="button" id="submit_btn" type="submit" pys-onClick="print_it" style="outline:solid">Submit</button>
+        </form>
+        <br>
+        <div id="request_output"></div>
+        
+    <py-script>
+
+        def print_it(*args, **kwargs):
+            <!-- Element('request_output').write("<strong>Hello</strong><br><p>Not Bold and on a different line</p>") -->
+            document.getElementById('request_output').innerHTML = "<strong>Hello</strong><br><p>Not Bold and on a different line</p>"
+       
+    </py-script>
+    </body>
+</html>

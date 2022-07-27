@@ -21,6 +21,7 @@
             <input type="text" id="breed" name="breed" style="outline:solid"><br><br>
             
             <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search Breed</button>
+        <br>    
         </form>
         <div id="request_output"></div>
         <br>
@@ -39,12 +40,8 @@ async def lookup(*args, **kwargs):
     response = await pyfetch(url=f"https://api.thedogapi.com/v1/breeds/search?q={query}", method="GET")
 
     x = await response.json()
-    <!-- Element('request_output').write(x) -->
+    <!-- Element('request_output').write(x) -->  
     document.getElementById('request_output').innerHTML = x
-
-
-
-
        
     </py-script>
     </body>

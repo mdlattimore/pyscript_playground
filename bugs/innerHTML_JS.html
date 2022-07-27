@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page</title>     
+    </head>
+
+    <body>
+        <h1>innerHTML - JS</h1>
+        <form onsubmit="return false">
+            <button class="button" id="submit_btn" type="submit" onClick="print_it()" style="outline:solid">Submit</button>  
+        </form>
+        <br>
+        <div id="request_output"></div>
+       
+ <script type="text/javascript">
+    function print_it() {
+    document.getElementById('request_output').innerHTML = "<strong>Hello</strong><br><p>Not Bold and on a different line</p>";
+    event.defaultPrevented()
+    }   
+</script>
+    </body>
+</html>
