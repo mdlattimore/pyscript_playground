@@ -59,7 +59,7 @@ async def lookup(*args, **kwargs):
     possibles = (c for c in ["request_output1", "request_output2", "request_output3", "request_output4", "request_output5", "request_output6", "request_output7", "request_output8"])
     hits = possibles
 
-    for i in range(0, len(x) - 1):
+    for i in range(0, len(x)):
         Element(next(hits)).write(
             f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
             <!-- f"Temperament: {x[i]['temperament']}&lt;br&gt;" + -->
