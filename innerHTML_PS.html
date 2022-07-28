@@ -8,6 +8,7 @@
     <body>
         <h1>innerHTML - PS</h1>
         <form onsubmit="return false">   
+            <input type="text" id="word" name="word" style="outline:solid">
             <button class="button" id="submit_btn" type="submit" pys-onClick="print_it" style="outline:solid">Submit</button>
         </form>
         <br>
@@ -19,7 +20,8 @@
     <py-script>
 
         def print_it(*args, **kwargs):
-            Element('ps_output').write("<strong>Hello</strong><br><p>Not Bold and on a different line</p>")
+            x = Element('word').value
+            Element('ps_output').write(f"&lt;strong&gt;{x}&lt;/strong&gt;&lt;br&gt;<p>Not Bold and on a different line</p>")
             document.getElementById('js_output').innerHTML = "<strong>Hello</strong><br><p>Not Bold and on a different line</p>"
        
     </py-script>

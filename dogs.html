@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dogs</title>
+        <!-- Latest compiled and minified CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- PyScript import -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid p-5 bg-primary text-white text-center">
+            <h1>The Dog Database</h1>
+            <p>Using the api at <a href="https://thedogapi.com" style="color:white">thedogapi.com</a></p>
+        </div>
+
+        <div class="container-fluid px-5 pt-3">
+            <p>This is a demo built on the new PyScript project. PyScript is a framework that allows Python to be run directly in the web browser, without the need to send requests and receive responses from a server. This particular demo asks for user input, in this case, a breed of dog, then queries thedogapi and returns the api's response. Ordinarily, I would make the api requests using Python's third party <code>requests</code> module. However, <code>requests</code> has not been compiled for use with PyScript. As such, this page uses PyScript's own <code>pyfetch</code> method, a wrapper of Javascript's <code>fetch</code>. One other quick note: the response from the api is displayed on the page using PyScript's <code>Element</code> class which wraps JavaScript's <code>innerHTML</code> element. While what you see is formatted, PyScript doesn't fully support <code>innerHTML</code> formatting in the way pure JavaScript does. Specifically, at the moment anyway, PyScript doesn't quite know what to do with the '<' and '>' symbols in html tags. As such, the code is written using html character codes for the two symbols. </p>
+        </div>
+
+        <div class="container-fluid px-5">
+        <form class="form-control" onsubmit="return false">
+            <label for="breed">Enter a breed of dog</label><br>
+            <input type="text" id="breed" name="breed" style="outline:solid"><br><br>
+            
+            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search Breed</button>
+        </form>
+        </div>
+        <br>
+        <div class="container-fluid px-5 pt-3">
+            <p id="request_output1"></p>
+            <p id="request_output2"></p>
+            <p id="request_output3"></p>
+            <p id="request_output4"></p>
+            <p id="request_output5"></p>
+            <p id="request_output6"></p>
+            <p id="request_output7"></p>
+            <p id="request_output8"></p>
+        </div>
+        <br>
+       
+        
+    <py-script>
+
+from pyodide.http import pyfetch
+import asyncio
+
+
+async def lookup(*args, **kwargs):
+    query = document.getElementById('breed').value
+    response = await pyfetch(url=f"https://api.thedogapi.com/v1/breeds/search?q={query}", method="GET")
+
+    x = await response.json()
+    possibles = (c for c in ["request_output1", "request_output2", "request_output3", "request_output4", "request_output5", "request_output6", "request_output7", "request_output8"])
+    hits = possibles
+
+    for i in range(0, len(x) - 1):
+        Element(next(hits)).write(
+            f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
+            <!-- f"Temperament: {x[i]['temperament']}&lt;br&gt;" + -->
+            f"Height range: {x[i]['height']['imperial']} inches.&lt;br&gt;" +
+            f"Weight range: {x[i]['weight']['imperial']} pounds.&lt;br&gt;" +
+            f"Life span: {x[i]['life_span']}&lt;br&gt;"
+
+            )
+    <!-- document.getElementById('request_output').innerHTML = x -->
+       
+    </py-script>
+    </body>
+</html>
