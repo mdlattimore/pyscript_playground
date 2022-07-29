@@ -41,6 +41,18 @@
             <p id="request_output6"></p>
             <p id="request_output7"></p>
             <p id="request_output8"></p>
+            <p id="request_output9"></p>
+            <p id="request_output10"></p>
+            <p id="request_output11"></p>
+            <p id="request_output12"></p>
+            <p id="request_output13"></p>
+            <p id="request_output14"></p>
+            <p id="request_output15"></p>
+            <p id="request_output16"></p>
+            <p id="request_output17"></p>
+            <p id="request_output18"></p>
+            <p id="request_output19"></p>
+            <p id="request_output20"></p>
         </div>
         <br>
        
@@ -59,7 +71,7 @@ async def lookup(*args, **kwargs):
     x = await response.json()
     
     # A generator allowing multiple results to be displayed via Element.write, up to 8 results
-    possibles = (c for c in ["request_output1", "request_output2", "request_output3", "request_output4", "request_output5", "request_output6", "request_output7", "request_output8"])
+    possibles = (c for c in ["request_output1", "request_output2", "request_output3", "request_output4", "request_output5", "request_output6", "request_output7", "request_output8", "request_output9", "request_output10", "request_output11", "request_output12", "request_output13", "request_output14", "request_output15", "request_output16", "request_output17", "request_output18", "request_output19", "request_output20",])
     hits = possibles
 
     # Checks to see if there is a result from the api. If not the condition fails
@@ -76,25 +88,34 @@ async def lookup(*args, **kwargs):
                 temperament = x[i]['temperament']
             except KeyError:
                 temperament = ""
-
-            Element(next(hits)).write(
-                f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
-                f"Temperament: {temperament}&lt;br&gt;" +
-                f"Height range: {x[i]['height']['imperial']} inches.&lt;br&gt;" +
-                f"Weight range: {x[i]['weight']['imperial']} pounds.&lt;br&gt;" +
-                f"Life span: {x[i]['life_span']}&lt;br&gt;"
-                )
+            try:
+                Element(next(hits)).write(
+                    f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
+                    f"Temperament: {temperament}&lt;br&gt;" +
+                    f"Height range: {x[i]['height']['imperial']} inches.&lt;br&gt;" +
+                    f"Weight range: {x[i]['weight']['imperial']} pounds.&lt;br&gt;" +
+                    f"Life span: {x[i]['life_span']}&lt;br&gt;"
+                    )
+            except StopIteration:
+                pass
 
         # Inserts blank strings into unused response_outputn elements so new searches
         # that return less than 8 results won't be stacked on top of previous results
         # Essentially, clears the display area following valid results
-        for y in range(10):
-            Element(next(hits)).write("")
+        
+        try:
+            for y in range(19):
+                Element(next(hits)).write("")
+        except StopIteration:
+            pass
     else:
         Element(next(hits)).write("&lt;strong&gt;Breed not found&lt;/strong&gt;")
         # See previous comment
-        for i in range(10):
-            Element(next(hits)).write("")
+        try:
+            for i in range(19):
+                Element(next(hits)).write("")
+        except StopIteration:
+            pass
     
     </py-script>
     </body>
