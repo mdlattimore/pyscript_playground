@@ -20,7 +20,7 @@
         </div>
 
         <div class="container-fluid px-5 pt-3">
-            <p>This is a demo built on the new PyScript project. PyScript is a framework that allows Python to be run directly in the web browser, without the need to send requests and receive responses from a server. This particular demo asks for user input, in this case, a breed of dog, then queries thedogapi and returns the api's response. Ordinarily, I would make the api requests using Python's third party <code>requests</code> module. However, <code>requests</code> has not been compiled for use with PyScript. As such, this page uses PyScript's own <code>pyfetch</code> method, a wrapper of Javascript's <code>fetch</code>. One other quick note: the response from the api is displayed on the page using PyScript's <code>Element</code> class which wraps JavaScript's <code>innerHTML</code> element. While what you see is formatted, PyScript doesn't fully support <code>innerHTML</code> formatting in the way pure JavaScript does. Specifically, at the moment anyway, PyScript doesn't quite know what to do with the '<' and '>' symbols in html tags. As such, the code is written using html character codes for the two symbols. </p>
+            <p>This is a demo built on the new PyScript project. PyScript is a framework that allows Python to be run directly in the web browser, without the need to send requests to and receive responses from a server. This particular demo asks for user input, in this case, a breed of dog, then queries thedogapi and returns the api's response. </p>
         </div>
 
         <div class="container-fluid px-5">
@@ -44,7 +44,6 @@
         </div>
         <br>
        
-        
     <py-script>
 
 from pyodide.http import pyfetch
@@ -52,24 +51,50 @@ import asyncio
 
 
 async def lookup(*args, **kwargs):
+    """Queries thedogapi using PyFetch, a Python wrapper for JavaScript fetch method"""
+
     query = document.getElementById('breed').value
     response = await pyfetch(url=f"https://api.thedogapi.com/v1/breeds/search?q={query}", method="GET")
 
     x = await response.json()
+    
+    # A generator allowing multiple results to be displayed via Element.write, up to 8 results
     possibles = (c for c in ["request_output1", "request_output2", "request_output3", "request_output4", "request_output5", "request_output6", "request_output7", "request_output8"])
     hits = possibles
 
-    for i in range(0, len(x)):
-        Element(next(hits)).write(
-            f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
-            <!-- f"Temperament: {x[i]['temperament']}&lt;br&gt;" + -->
-            f"Height range: {x[i]['height']['imperial']} inches.&lt;br&gt;" +
-            f"Weight range: {x[i]['weight']['imperial']} pounds.&lt;br&gt;" +
-            f"Life span: {x[i]['life_span']}&lt;br&gt;"
+    # Checks to see if there is a result from the api. If not the condition fails
+    # and the code in the else block is executed -- Breed not found
+    if x:
+        
+        for i in range(0, len(x)):
+            # Not all breeds have all keys. For now, we know that 'temperament'
+            # does not have a value for all breeds. This assigns an empty string
+            # to temperament for any breed that doesn't have a value
+            temperament = ""
+            try:
+                temperament = x[i]['temperament']
+            except KeyError:
+                temperament = ""
+            Element(next(hits)).write(
+                f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
+                f"Temperament: {temperament}&lt;br&gt;" +
+                f"Height range: {x[i]['height']['imperial']} inches.&lt;br&gt;" +
+                f"Weight range: {x[i]['weight']['imperial']} pounds.&lt;br&gt;" +
+                f"Life span: {x[i]['life_span']}&lt;br&gt;"
+                )
 
-            )
-    <!-- document.getElementById('request_output').innerHTML = x -->
-       
+        # Inserts blank strings into unused response_outputn elements so new searches
+        # that return less than 8 results won't be stacked on top of previous results
+        # Essentially, clears the display area following valid results
+        for y in range(10):
+            Element(next(hits)).write("")
+    else:
+        Element(next(hits)).write("&lt;strong&gt;Breed not found&lt;/strong&gt;")
+        # See previous comment
+        for i in range(10):
+            Element(next(hits)).write("")
+    
     </py-script>
     </body>
+    <!-- Ordinarily, I would make the api requests using Python's third party <code>requests</code> module. However, <code>requests</code> has not been compiled for use with PyScript. As such, this page uses PyScript's own <code>pyfetch</code> method, a wrapper of Javascript's <code>fetch</code>. One other quick note: the response from the api is displayed on the page using PyScript's <code>Element</code> class which wraps JavaScript's <code>innerHTML</code> element. While what you see is formatted, PyScript doesn't fully support <code>innerHTML</code> formatting in the way pure JavaScript does. Specifically, at the moment anyway, PyScript doesn't quite know what to do with the '<' and '>' symbols in html tags. As such, the code is written using html character codes for the two symbols. -->
 </html>
