@@ -15,8 +15,8 @@
 
     <body>
         <div class="container-fluid p-5 bg-primary text-white text-center">
-            <h1>The Dog Database</h1>
-            <p>Using the api at <a href="https://thedogapi.com" style="color:white">thedogapi.com</a></p>
+            <h1>The Dog "Ruff"erence</h1>
+            <p>Data from <a href="https://thedogapi.com" style="color:white">thedogapi.com</a></p>
         </div>
 
         <div class="container-fluid px-5 pt-3">
@@ -67,6 +67,7 @@ async def lookup(*args, **kwargs):
     if x:
         
         for i in range(0, len(x)):
+
             # Not all breeds have all keys. For now, we know that 'temperament'
             # does not have a value for all breeds. This assigns an empty string
             # to temperament for any breed that doesn't have a value
@@ -75,6 +76,7 @@ async def lookup(*args, **kwargs):
                 temperament = x[i]['temperament']
             except KeyError:
                 temperament = ""
+
             Element(next(hits)).write(
                 f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
                 f"Temperament: {temperament}&lt;br&gt;" +
