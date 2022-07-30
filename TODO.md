@@ -1,0 +1,3 @@
+dogs.html  
+-   Create function to resize photos to fixed size. Will likely need to use PyFetch to get image from url and Pillow to resize. I could simply write an external Python script to accomplish this, but that would defeat the goal of writing the app as a single HTML page with no external dependencies.
+-   Refactor code so that all results are concatenated into a single innerHTML value and written back into the page into a single element (rather than 20 different elements). This will make the results take up only as much room as necessary on the page (eliminating unnecessary scrolling) and eliminate the need for the generator expressions.
