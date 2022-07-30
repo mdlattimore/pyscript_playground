@@ -330,6 +330,12 @@ async def lookup(*args, **kwargs):
                 Element(next(hits)).write("")
         except StopIteration:
             pass
+
+        try:
+            for y in range(19):
+                Element(next(pics)).write("")
+        except StopIteration:
+            pass
     
     </py-script>
     </body>
