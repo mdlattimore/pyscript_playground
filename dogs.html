@@ -254,7 +254,7 @@
 
 from pyodide.http import pyfetch
 import asyncio
-
+from urllib.error import HTTPError
 
 async def lookup(*args, **kwargs):
     """Queries thedogapi using PyFetch, a Python wrapper for JavaScript fetch method"""
@@ -298,13 +298,14 @@ async def lookup(*args, **kwargs):
 
             try:
                 img = x[i]['reference_image_id']
-                filler = f"&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/{img}_1280.jpg' alt='No Photo Available'&gt;"
+                filler = f"&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/{img}_1280.jpg' alt='&nbspBroken Link'&gt;"
                 Element(next(pics)).write(
                     filler)
             except StopIteration:
                 pass
             except KeyError:
                 Element(next(pics)).write("No Photo Available")
+            
 
         # Inserts blank strings into unused response_outputn elements so new searches
         # that return less than 8 results won't be stacked on top of previous results
