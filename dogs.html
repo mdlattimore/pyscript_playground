@@ -297,10 +297,14 @@ async def lookup(*args, **kwargs):
                 continue
 
             try:
+                img = x[i]['reference_image_id']
+                filler = f"&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/{img}_1280.jpg' alt='No Photo Available'&gt;"
                 Element(next(pics)).write(
-                    "&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/B1Edfl9NX_1280.jpg' alt='New York'&gt;")
+                    filler)
             except StopIteration:
                 pass
+            except KeyError:
+                Element(next(pics)).write("No Photo Available")
 
         # Inserts blank strings into unused response_outputn elements so new searches
         # that return less than 8 results won't be stacked on top of previous results
