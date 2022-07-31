@@ -73,10 +73,21 @@ async def lookup(*args, **kwargs):
                 temperament = result['temperament']
             except KeyError:
                 temperament = ""
+            try:
+                bred_for = result['bred_for']
+            except KeyError:
+                bred_for = ""
+            try:
+                breed_group = result['breed_group']
+            except KeyError:
+                breed_group = ""
+            
 
             info = f""" 
             &lt;strong&gt;{result['name']}&lt;/strong&gt;&lt;br&gt;
+            Breed group: {breed_group}&lt;br&gt;
             Temperament: {temperament}&lt;br&gt;
+            Bred for: {bred_for}&lt;br&gt;
             Height range: {result['height']['imperial']} inches.&lt;br&gt;
             Weight range: {result['weight']['imperial']} pounds.&lt;br&gt;
             Life span: {result['life_span']}&lt;br&gt;
