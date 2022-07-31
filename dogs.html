@@ -21,6 +21,10 @@
                 margin-right: auto;
                 margin-left: auto;
             }
+            a {
+                text-decoration: none;
+                color: black;
+            }
 
         </style>
     </head>
@@ -95,7 +99,7 @@ async def lookup(*args, **kwargs):
 
             try:
                 img = result['reference_image_id']
-                filler = f"&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/{img}_1280.jpg' alt='&nbspBroken Link'&gt;"
+                filler = f"&lt;a href='https://cdn2.thedogapi.com/images/{img}_1280.jpg' class='pic_link' target='_blank'&gt;&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/{img}_1280.jpg' alt='&nbspBroken Link'&gt;&lt;/a&gt;"
             except KeyError:
                 filler= "No Photo Available"
 
