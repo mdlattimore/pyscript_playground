@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Latest compiled and minified CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- PyScript import -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    </head>
+
+    <body>
+        <py-env>
+            - pillow
+        </py-env>
+        <div class="container-fluid">
+
+            <div id="picture"></div>
+        
+        </div>
+        
+<py-script>
+from pyodide.http import pyfetch
+import asyncio
+from PIL import Image
+
+
+async def get_image():
+    response = await pyfetch(url="https://scontent.faus1-1.fna.fbcdn.net/v/t1.6435-9/75328604_10219133654466744_4080882452107624448_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=0zmdXsN9k_sAX92xdEA&_nc_ht=scontent.faus1-1.fna&oh=00_AT9KuGPJBsB1h1_L8En47H3cjmfqhS9tdmrIKMo5L-hKmw&oe=630AC96C", method="GET")
+
+    with open("pic.jpg", "wb") as f:
+        f.write(await response.bytes())
+
+    img = Image.open("pic.jpg")
+    img.save(await "photo.jpg")
+    filler = f"&lt;img src="photo.jpg" alt='Oopsy'&gt;"
+
+    Element('picture').write(
+        filler
+    )
+get_image()
+
+<!-- def resize_image():
+    pic = get_image()
+    img = Image.open(pic)
+    img.show()
+    <!-- saveAs(pic, "picture.jpg")
+    Element("picture").write(
+        "&lt;img src='picture.jpg' alt='Hi There'&gt;"
+    )
+        
+resize_image() -->
+
+    
+
+
+
+    
+</py-script>
+
+    </body>
+</html>

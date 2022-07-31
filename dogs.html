@@ -15,16 +15,14 @@
             .row {
                 max-height: 200px;
                 margin: 5px 0px;
-                min-height: 0px;
             }
             .photo {
                 max-width: 40%;
                 margin-right: auto;
                 margin-left: auto;
             }
-        
-        </style>
 
+        </style>
     </head>
 
     <body>
@@ -38,215 +36,16 @@
         </div>
 
         <div class="container-fluid px-5">
-        <form class="form-control" onsubmit="return false">
-            <label for="breed">Enter a breed of dog</label><br>
-            <input type="text" id="breed" name="breed" style="outline:solid"><br><br>
-            
-            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search Breed</button>
-        </form>
+            <form class="form-control" onsubmit="return false">
+                <label for="breed">Enter a breed of dog</label><br>
+                <input type="text" id="breed" name="breed" style="outline:solid"><br><br>
+                
+                <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search Breed</button>
+            </form>
         </div>
         <br>
         <div class="container-fluid px-5 pt-3">
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output1"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic1" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output2"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic2" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output3"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic3" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output4"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic4" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output5"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic5" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output6"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic6" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output7"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic7" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output8"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic8" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output9"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic9" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output10"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic10" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output11"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic11" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output12"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic12" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output13"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic13" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output14"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic14" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output15"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic15" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output16"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic16" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output17"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic17" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output18"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic18" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output19"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic19" class="photo"></div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-sm-6">           
-                    <div id="request_output20"></div>      
-                </div>
-                <div class="col-sm-6">
-                    <div id="pic20" class="photo"></div>
-                </div>
-            </div><br>
-
-
-            <!-- <p id="request_output3"></p>
-            <p id="request_output4"></p>
-            <p id="request_output5"></p>
-            <p id="request_output6"></p>
-            <p id="request_output7"></p>
-            <p id="request_output8"></p>
-            <p id="request_output9"></p>
-            <p id="request_output10"></p>
-            <p id="request_output11"></p>
-            <p id="request_output12"></p>
-            <p id="request_output13"></p>
-            <p id="request_output14"></p>
-            <p id="request_output15"></p>
-            <p id="request_output16"></p>
-            <p id="request_output17"></p>
-            <p id="request_output18"></p>
-            <p id="request_output19"></p>
-            <p id="request_output20"></p> -->
+            <div id="request_output"></div>
         </div>
         <br>
        
@@ -254,7 +53,7 @@
 
 from pyodide.http import pyfetch
 import asyncio
-from urllib.error import HTTPError
+
 
 async def lookup(*args, **kwargs):
     """Queries thedogapi using PyFetch, a Python wrapper for JavaScript fetch method"""
@@ -263,80 +62,48 @@ async def lookup(*args, **kwargs):
     response = await pyfetch(url=f"https://api.thedogapi.com/v1/breeds/search?q={query}", method="GET")
 
     x = await response.json()
-    
-    # A generator allowing multiple results to be displayed via Element.write, up to 8 results
-    possibles = (c for c in ["request_output1", "request_output2", "request_output3", "request_output4", "request_output5", "request_output6", "request_output7", "request_output8", "request_output9", "request_output10", "request_output11", "request_output12", "request_output13", "request_output14", "request_output15", "request_output16", "request_output17", "request_output18", "request_output19", "request_output20",])
-    hits = possibles
-    
-    photos = (p for p in ["pic1", "pic2", "pic3", "pic4", "pic5", "pic6", "pic7", "pic8", "pic9", "pic10", "pic11", "pic12", "pic13", "pic14", "pic15", "pic16", "pic17", "pic18", "pic19", "pic20",])
-    pics = photos
 
     # Checks to see if there is a result from the api. If not the condition fails
     # and the code in the else block is executed -- Breed not found
     if x:
         
-        for i in range(0, len(x)):
-
-            # Not all breeds have all keys. For now, we know that 'temperament'
-            # does not have a value for all breeds. This assigns an empty string
-            # to temperament for any breed that doesn't have a value
-            temperament = ""
+        writeback = ""
+        for result in x:
             try:
-                temperament = x[i]['temperament']
+                temperament = result['temperament']
             except KeyError:
                 temperament = ""
-            try:
-                Element(next(hits)).write(
-                    f"&lt;strong&gt;{x[i]['name']}&lt;/strong&gt;&lt;br&gt;" +
-                    f"Temperament: {temperament}&lt;br&gt;" +
-                    f"Height range: {x[i]['height']['imperial']} inches.&lt;br&gt;" +
-                    f"Weight range: {x[i]['weight']['imperial']} pounds.&lt;br&gt;" +
-                    f"Life span: {x[i]['life_span']}&lt;br&gt;"
-                    )
-            except StopIteration:
-                continue
+
+            info = f""" 
+            &lt;strong&gt;{result['name']}&lt;/strong&gt;&lt;br&gt;
+            Temperament: {temperament}&lt;br&gt;
+            Height range: {result['height']['imperial']} inches.&lt;br&gt;
+            Weight range: {result['weight']['imperial']} pounds.&lt;br&gt;
+            Life span: {result['life_span']}&lt;br&gt;
+            """
 
             try:
-                img = x[i]['reference_image_id']
+                img = result['reference_image_id']
                 filler = f"&lt;img class='img-fluid' src='https://cdn2.thedogapi.com/images/{img}_1280.jpg' alt='&nbspBroken Link'&gt;"
-                Element(next(pics)).write(
-                    filler)
-            except StopIteration:
-                pass
             except KeyError:
-                Element(next(pics)).write("No Photo Available")
+                filler= "No Photo Available"
+
+            writeback += f"""    
+            &lt;div class="row"&gt;
+                &lt;div class="col-sm-6"&gt;           
+                    &lt;div id="request_output"&gt;{info}&lt;/div&gt;      
+                &lt;/div&gt;
+                &lt;div class="col-sm-6"&gt;
+                    &lt;div id="pic" class="photo"&gt;&lt;br&gt;{filler}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;br&gt;
+            """
             
+        Element('request_output').write(writeback)
 
-        # Inserts blank strings into unused response_outputn elements so new searches
-        # that return less than 8 results won't be stacked on top of previous results
-        # Essentially, clears the display area following valid results
-        
-        try:
-            for y in range(19):
-                Element(next(hits)).write("")
-        except StopIteration:
-            pass
-
-        try:
-            for y in range(19):
-                Element(next(pics)).write("")
-        except StopIteration:
-            pass
     else:
-        Element(next(hits)).write("&lt;strong&gt;Breed not found&lt;/strong&gt;")
-        # See previous comment
-        try:
-            for i in range(19):
-                Element(next(hits)).write("")
-        except StopIteration:
-            pass
+        Element('request_output').write("&lt;div class='row'&gt;&lt;strong&gt;Breed not found&lt;/strong&gt;&lt;/div&gt;")
 
-        try:
-            for y in range(19):
-                Element(next(pics)).write("")
-        except StopIteration:
-            pass
-    
     </py-script>
     </body>
     <!-- Ordinarily, I would make the api requests using Python's third party <code>requests</code> module. However, <code>requests</code> has not been compiled for use with PyScript. As such, this page uses PyScript's own <code>pyfetch</code> method, a wrapper of Javascript's <code>fetch</code>. One other quick note: the response from the api is displayed on the page using PyScript's <code>Element</code> class which wraps JavaScript's <code>innerHTML</code> element. While what you see is formatted, PyScript doesn't fully support <code>innerHTML</code> formatting in the way pure JavaScript does. Specifically, at the moment anyway, PyScript doesn't quite know what to do with the '<' and '>' symbols in html tags. As such, the code is written using html character codes for the two symbols. -->
