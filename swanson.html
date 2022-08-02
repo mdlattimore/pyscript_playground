@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ron Effing Swanson</title>
+        <!-- PyScript import -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        
+    </head>
+
+    <body>
+        <header>
+            <h1>The Wisdom of Ron Swanson</h1>
+            <h3>A searchable collection of the lovable civil servant's most quotable quotes.</h3>
+            <p>For a random quote, leave the search box blank and click "Search"</p>
+        </header>
+        <form onsubmit="return false">
+            <label for="search">Search for quote:</label><br>
+            <input type="text" id="search" name="search"><br><br>
+            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search</button>
+        </form>
+        <br><br>
+        <div id="results"></div>
+        
+        
+<py-script>
+from pyodide.http import pyfetch
+import asyncio
+
+
+async def lookup(*args, **kwargs):
+    """Queries thedogapi using PyFetch, a Python wrapper for JavaScript fetch method"""
+
+    query = document.getElementById('search').value
+    response = await pyfetch(url=f"https://ron-swanson-quotes.herokuapp.com/v2/quotes/search/{query}", method="GET")
+
+    quotes = await response.json()
+
+    display = ""
+    for quote in quotes:
+        display += f"""
+        &lt;p&gt;{quote}&lt;/p&gt;
+        """
+
+    Element("results").write(display)
+</py-script>
+
+    </body>
+</html>
