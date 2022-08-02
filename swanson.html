@@ -7,23 +7,27 @@
         <title>Ron Effing Swanson</title>
         <!-- PyScript import -->
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-        
+        <style>
+            body {
+                margin: 30px;
+            }
+        </style>
     </head>
 
     <body>
-        <header>
-            <h1>The Wisdom of Ron Swanson</h1>
-            <h3>A searchable collection of the lovable civil servant's most quotable quotes.</h3>
-            <p>For a random quote, leave the search box blank and click "Search"</p>
-        </header>
-        <form onsubmit="return false">
-            <label for="search">Search for quote:</label><br>
-            <input type="text" id="search" name="search"><br><br>
-            <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search</button>
-        </form>
-        <br><br>
-        <div id="results"></div>
-        
+            <header>
+                <h1>The Wisdom of Ron Swanson</h1>
+                <h3>A searchable collection of the lovable civil servant's most quotable quotes.</h3>
+                <p>For a random quote, leave the search box blank and click "Search"</p>
+            </header>
+            <form onsubmit="return false">
+                <label for="search">Search for quote:</label><br>
+                <input type="text" id="search" name="search"><br><br>
+                <button class="button" id="submit_btn" type="submit" pys-onClick="lookup" style="outline:solid">Search</button>
+            </form>
+            <br><br>
+            <div id="results"></div>
+
         
 <py-script>
 from pyodide.http import pyfetch
