@@ -13,11 +13,13 @@
                 margin:0;
             }
             header {
-                text-align: center;
-                background-color: aqua;
+                text-align: left;
+                background-color: #4B9CD3;
                 margin-top: 0px;
                 padding: 15px;
+                overflow: hidden;
             }
+           
             #main {
                 padding: 15px 25px;
                 font-size: 1.25em;
@@ -44,13 +46,24 @@
             a:hover {
                 text-decoration: underline;
             }
+            #intro {
+                display: inline;
+                width: 75%;
+                float: left;
+            }
+          
         </style>
     </head>
 
     <body>
             <header>
+                <div id="intro">
                 <h1>The Wisdom of Ron Swanson</h1>
                 <h3>A searchable collection of the lovable civil servant's most quotable quotes.</h3>
+            </div>
+            <div id="logo">
+                <img src="https://i.imgur.com/FfSgIOR.png" width="110" alt="Pawnee">
+            </div>    
             </header>
 
             <div id="main">
