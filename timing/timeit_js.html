@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using JavaScript</title>
+</head>
+<body>
+    <br>
+    <p>Times how long JavaScript code takes to count from 0 to 1,000,000</p>
+    <br>
+    <form onsubmit="return false">
+        <button class="button" type="submit" onClick="go()">Submit</button>  
+    </form>
+   <div id="output"></div>
+   <div id="time"></div> 
+
+<script>
+    function go() {
+        let x = 0;
+        start = new Date();
+        while (x < 1000000) {
+            x++;
+        }
+        stop = new Date();
+        let total = (stop - start) / 1000;
+        let times = total.toString()
+        document.getElementById('time').innerHTML = times;
+        event.defaultPrevented;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Code Timer</title>
+        <!-- Latest compiled and minified CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- PyScript import -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  
+    </head>
+
+    <body>
+        <div class="container-fluid p-5 bg-primary text-white text-center">
+            <h1>Code Timer</h1>
+        </div>
+        <div class="row">
+            <div col="col-sm-12">&nbsp;</div>
+        </div>
+        <div class="container-fluid px-5 pt-3">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                    <p>This is simple code timer that measures (in milliseconds) how long it takes code running in the browser to count from 0 to 1,000,000. The timer begins when you click one of the "Go!" buttons. The top button executes a JavaScript function. The bottom button executes an equivalent function written in Python, running within the PyScript framework (which allows Python to be run directly in the browser).</p>
+                </div>
+                <div class="col-sm-1"></div>  
+                <div class="col-sm-4">
+                    <h2>JavaScript Function</h2>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button type="submit" id="js_btn" name="js_btn" onClick="js_run()">Go!</button>
+                            </div>    
+                        </div>
+                    <p id="js_result">&nbsp;</p>
+                    <br>
+                    <br>
+                    <h2>PyScript Function</h2>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button type="submit" id="py_btn" name="py_btn" pys-onclick="py_run">Go!</button>
+                            </div>    
+                        </div>   
+                    <p id="py_result">&nbsp;</p>
+                </div>    
+            </div>
+                <section>
+                    
+
+                </section>
+            </article>
+        </div>    
+    
+<script>
+
+</script>
+        
+<py-script>
+    import time
+
+    def py_run(*args, **kwargs):
+        start = time.perf_counter()
+        x = 0
+        while x < 1000000:
+            x += 1
+        stop = time.perf_counter()
+        timed = f"{(stop - start) * 1000}"
+        display = f"{timed} milliseconds."
+        Element('py_result').write(display)
+</py-script>
+
+<script>
+    function js_run() {
+        let x = 0;
+        start = performance.now();
+        while (x < 1000000) {
+            x++;
+        }
+        stop = performance.now();
+        let total = stop - start;
+        let times = total.toString()
+        document.getElementById('js_result').innerHTML = `${times} milliseconds`;
+        event.defaultPrevented;
+    }
+</script>
+
+    </body>
+</html>
