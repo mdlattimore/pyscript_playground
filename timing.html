@@ -64,14 +64,15 @@
     import time
 
     def py_run(*args, **kwargs):
-        console.log(f"Python start: {time.time() * 1000}")
-        start = time.perf_counter()
+        
         x = 0
+        start = time.perf_counter()
+        console.log(f"Python start: {start * 1000}")
         while x < 1000000:
             x += 1
         stop = time.perf_counter()
         timed = f"{(stop - start) * 1000}"
-        console.log(f"Python executed: {time.time() * 1000}")
+        console.log(f"Python executed: {stop * 1000}")
         <!-- console.log(x) -->
         display = f"{timed} milliseconds"
         Element('py_result').write(display)
@@ -79,15 +80,17 @@
 
 <script>
     function js_run() {
-        console.log(`JS start ${Date.now()}`)
+        
         let x = 0;
         start = performance.now();
+        console.log(`JS start ${start}`)
         while (x < 1000000) {
             x++;
         }
-        console.log(`JS executed ${Date.now()}`)
-        // console.log(x)
         stop = performance.now();
+        console.log(`JS executed ${stop}`)
+        // console.log(x)
+        
         let total = stop - start;
         let times = total.toString();
         document.getElementById('js_result').innerHTML = `${times} milliseconds`;
