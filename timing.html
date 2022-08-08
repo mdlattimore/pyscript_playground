@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5">
-                    <p style="font-size: 1.25em">This is simple code timer that measures (in milliseconds) how long it takes code running in the browser to count from 0 to 1,000,000. The timer begins when you click one of the "Go!" buttons. The top button executes a JavaScript function. The bottom button executes an equivalent function written in Python, running within the PyScript framework (which allows Python to be run directly in the browser).</p>
+                    <p style="font-size: 1.20em">This is simple code timer that measures (in milliseconds) how long it takes code running in the browser to count from 0 to 1,000,000. The timer begins when you click one of the "Go!" buttons. The top button executes a JavaScript function. The middle button executes an equivalent function written in Python, running within the PyScript framework (which allows Python to be run directly in the browser). The bottom button executes both (though not simultaneously--keep reading).</p>
                     <p>For added fun, open the console and run each function and both together. The console will print the start and completed time (Unix time in ms) for each function. Regardless of the order in which the onClick events appear in the html or the order of the scripts in the body of the html, the JavaScript function always runs first.</p>
                     <br>
                 </div>
@@ -71,6 +71,7 @@
         stop = time.perf_counter()
         timed = f"{(stop - start) * 1000}"
         console.log(f"Python executed: {time.time() * 1000}")
+        <!-- console.log(x) -->
         display = f"{timed} milliseconds"
         Element('py_result').write(display)
 </py-script>
@@ -84,6 +85,7 @@
             x++;
         }
         console.log(`JS executed ${Date.now()}`)
+        // console.log(x)
         stop = performance.now();
         let total = stop - start;
         let times = total.toString();
