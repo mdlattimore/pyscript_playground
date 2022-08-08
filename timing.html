@@ -15,8 +15,8 @@
     </head>
 
     <body>
-        <div class="container-fluid p-5 bg-primary text-white text-center">
-            <h1>Code Timer</h1>
+        <div class="container-fluid p-4 bg-primary text-white text-center">
+            <h1 style="font-size: 4em">Code Timer</h1>
         </div>
         <div class="row">
             <div col="col-sm-12">&nbsp;</div>
@@ -25,7 +25,8 @@
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5">
-                    <p>This is simple code timer that measures (in milliseconds) how long it takes code running in the browser to count from 0 to 1,000,000. The timer begins when you click one of the "Go!" buttons. The top button executes a JavaScript function. The bottom button executes an equivalent function written in Python, running within the PyScript framework (which allows Python to be run directly in the browser).</p>
+                    <p style="font-size: 1.25em">This is simple code timer that measures (in milliseconds) how long it takes code running in the browser to count from 0 to 1,000,000. The timer begins when you click one of the "Go!" buttons. The top button executes a JavaScript function. The bottom button executes an equivalent function written in Python, running within the PyScript framework (which allows Python to be run directly in the browser).</p>
+                    <br>
                 </div>
                 <div class="col-sm-1"></div>  
                 <div class="col-sm-4">
@@ -44,45 +45,49 @@
                             </div>    
                         </div>   
                     <p id="py_result">&nbsp;</p>
+                    <br>
+                    <h2>Run Both</h2>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button type="submit" id="both_btn" name="both_btn" pys-onclick="py_run" onClick="js_run()" p>Go!</button>
+                        </div>
+                        <br>
+                    </div>
                 </div>    
             </div>
-                <section>
-                    
-
-                </section>
-            </article>
+            
         </div>    
-    
-<script>
-
-</script>
         
 <py-script>
     import time
 
     def py_run(*args, **kwargs):
+        console.log(f"Python start: {time.time() * 1000}")
         start = time.perf_counter()
         x = 0
         while x < 1000000:
             x += 1
         stop = time.perf_counter()
         timed = f"{(stop - start) * 1000}"
+        console.log(f"Python executed: {time.time() * 1000}")
         display = f"{timed} milliseconds"
         Element('py_result').write(display)
 </py-script>
 
 <script>
     function js_run() {
+        console.log(`JS start ${Date.now()}`)
         let x = 0;
         start = performance.now();
         while (x < 1000000) {
             x++;
         }
+        console.log(`JS executed ${Date.now()}`)
         stop = performance.now();
         let total = stop - start;
-        let times = total.toString()
+        let times = total.toString();
         document.getElementById('js_result').innerHTML = `${times} milliseconds`;
-        event.defaultPrevented;
+        // event.defaultPrevented;
     }
 </script>
 
