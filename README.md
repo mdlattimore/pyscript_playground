@@ -17,4 +17,9 @@ This is a collection of scripts written using the recently released PyScript fra
 ### [Temperature Converter](https://mdlattimore.github.io/pyscript_playground/temp_converter)  
 > Simple fahrenheit to celsius converter
 
+### [Ron Swanson Quotes](https://mdlattimore.github.io/pyscript_playground/swanson)
+> For fans of Parks and Recreation, this is a page that accesses an searchable API containing quotes from that loveable Director of Parks and Recreation in Pawnee, Indiana, Ron Swanson
+
+### [Code Timer](https://mdlattimore.github.io/pyscript_playground/timing)
+> This page runs two essentially equivalent functions, one written in JavaScript, the other in Python (and executed using the PyScript framework). The code times how long it takes each function to execute, allowing you to see the spped difference between a JS function and Python function run in a browser.
  
