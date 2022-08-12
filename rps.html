@@ -24,7 +24,7 @@
                 font-size: 2.5rem;
                 text-align: center;
             }
-            article, section {
+            article, section, footer {
                 padding: 0 2rem 0 2rem;
             }
             p {
@@ -49,6 +49,9 @@
             }
             .clearfix {
                 clear: both;
+            }
+            footer > p {
+                font-size: 1rem;
             }
         
         </style>
@@ -82,7 +85,10 @@
             <p class="clearfix" id="user_move">&nbsp;</p>
             <p id="computer_move">&nbsp;</p>
             <p id="outcome">&nbsp;</p>
-        </section>        
+        </section> 
+        <footer>
+            <p>For more information about this and other pages built on the PyScript framework, visit my GitHub pages collection <a href="https://mdlattimore.github.io/pyscript_playground" target="_blank">here.</a></p>
+        </footer>       
         </main>
 <py-script>
 import asyncio
