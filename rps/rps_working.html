@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+        <!-- PyScript import -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <style>
+            body {
+                margin: 0;
+                background-color: aliceblue;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            header {
+                color: aliceblue;
+                background-color: blue;
+                padding: .75rem;
+                color: aliceblue;
+            }
+            h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+            article, section {
+                padding: 0 2rem 0 2rem;
+            }
+            p {
+                font-size: 1.5rem;
+            }
+    
+            .button {
+                text-align: center;
+                display: inline-block;
+                margin-right: 3rem;
+                font-size: 1.5rem;
+            }
+            main {
+                width: 95%;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .ready {
+                display: inline;
+                margin-right: 2rem;
+                float: left;
+            }
+            .clearfix {
+                clear: both;
+            }
+        
+        </style>
+    </head>
+ 
+    <body>
+        <header>
+            <h1>Rock, Paper, Scissors!</h1>
+        </header>
+        <br>
+        <main>
+        <article>
+            <p>Classic Rock, Paper, Scissors Game</p>
+        </article>
+        <br><br>
+        <section>
+            <form onsubmit="return false">  
+                <!-- preceding function and argument with partial (part of functools, which is imported into PyScript) with function and function argument as arguments, prevents function from firing on page load -->
+                <button class="button" id="rock" type="submit" pys-onClick="partial(play, 'rock')">Rock</button>
+                <button class="button" id="paper" type="submit" pys-onClick="partial(play, 'paper')">Paper</button>
+                <button class="button" id="scissors" type="submit" pys-onClick="partial(play,'scissors')">Scissors</button>
+            </form>   
+        </section>        
+        <br><br>
+        <section>
+            <p class="ready" id="rock-intro">&nbsp;</p>
+            <p class="ready" id="paper-intro">&nbsp;</p>
+            <p class="ready" id="scissors-intro">&nbsp;</p>
+            <p class="ready" id="shoot-intro">&nbsp;</p>
+            <br><br>
+            <p class="clearfix" id="user_move">&nbsp;</p>
+            <p id="computer_move">&nbsp;</p>
+            <p id="outcome">&nbsp;</p>
+        </section>        
+        </main>
+<py-script>
+import asyncio
+import random
+from functools import partial
+
+MOVES = ["rock", "paper", "scissors"]
+WIN_MSG = ["You win!", "You dropped the bomb on me! You win!", "Grrrr... You win. Jerk."]
+LOSE_MSG = ["Ha ha! You lose!", "Don't bring that weak game in here! You lose!", "You might be good. But I'm better! Non-winner"]
+TIE_MSG = ["Great minds think alike. We tied.", "I see the way you think. We tied.", "No joy! Tie."]
+
+async def play(move, *args, **kwargs):
+    # Display elements setup - clear element and put whitespace placeholder
+    Element("rock-intro").write("&nbsp;")
+    Element("paper-intro").write("&nbsp;")
+    Element("scissors-intro").write("&nbsp;")
+    Element("shoot-intro").write("&nbsp;")
+    <br>
+    Element("user_move").write("&nbsp;")
+    Element("computer_move").write("&nbsp;")
+    Element("outcome").write("&nbsp;")
+    await asyncio.sleep(.5)
+
+    computer_move = random.choice(MOVES)
+    Element('rock-intro').write("Rock...")
+    await asyncio.sleep(.5)
+    Element('paper-intro').write("Paper...")
+    await asyncio.sleep(.5)
+    Element('scissors-intro').write("Scissors...")
+    await asyncio.sleep(.5)
+    Element('shoot-intro').write("SHOOT!")
+    <!-- Element("user_move").write(move.capitalize()) -->
+    <!-- Element("computer_move").write(computer_move.capitalize()) -->
+    document.getElementById('user_move').innerHTML = f"&lt;p&gt;You threw {move.capitalize()}&lt;/p&gt;"
+    document.getElementById('computer_move').innerHTML = f"&lt;p&gt;Computer threw {computer_move.capitalize()}&lt;/p&gt;"
+
+
+    if move.lower() == "rock":
+        if computer_move == "rock":
+            Element('outcome').write(random.choice(TIE_MSG))
+        elif computer_move == "scissors":
+            Element('outcome').write(random.choice(WIN_MSG))
+        else:
+            Element('outcome').write(random.choice(LOSE_MSG))
+    elif move.lower() == "paper":
+        if computer_move == "paper":
+            Element('outcome').write(random.choice(TIE_MSG))
+        elif computer_move == "rock":
+            Element('outcome').write(random.choice(WIN_MSG))
+        else:
+            Element('outcome').write(random.choice(LOSE_MSG))
+    else:
+        if computer_move == "scissors":
+            Element('outcome').write(random.choice(TIE_MSG))
+        elif computer_move == "paper":
+            Element('outcome').write(random.choice(WIN_MSG))
+        else:
+            Element('outcome').write(random.choice(LOSE_MSG))
+
+</py-script>
+
+    </body>
+</html>
