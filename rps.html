@@ -28,14 +28,14 @@
                 padding: 0 2rem 0 2rem;
             }
             p {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
     
             .button {
                 text-align: center;
                 display: inline-block;
-                margin-right: 3rem;
-                font-size: 1.5rem;
+                margin-right: 2rem;
+                font-size: 1.25rem;
             }
             main {
                 width: 95%;
@@ -61,9 +61,9 @@
         <br>
         <main>
         <article>
-            <p>Classic Rock, Paper, Scissors Game</p>
+            <p>This is a version of the classic Rock, Paper, Scissors game. You make your choice by clicking 'Rock', 'Paper' or 'Scissors'. Once you've made your selection, the program makes its selection and you play. In case you're wondering, the program's choice is random -- no, there's no one out to get you.</p>
         </article>
-        <br><br>
+        <br>
         <section>
             <form onsubmit="return false">  
                 <!-- preceding function and argument with partial (part of functools, which is imported into PyScript) with function and function argument as arguments, prevents function from firing on page load -->
@@ -72,12 +72,12 @@
                 <button class="button" id="scissors" type="submit" pys-onClick="partial(play,'scissors')">Scissors</button>
             </form>   
         </section>        
-        <br><br>
+        <br>
         <section>
             <p class="ready" id="rock-intro">&nbsp;</p>
             <p class="ready" id="paper-intro">&nbsp;</p>
             <p class="ready" id="scissors-intro">&nbsp;</p>
-            <p class="ready" id="shoot-intro">&nbsp;</p>
+            <p class="ready" id="shoot-intro" style="color: red;">&nbsp;</p>
             <br><br>
             <p class="clearfix" id="user_move">&nbsp;</p>
             <p id="computer_move">&nbsp;</p>
@@ -114,11 +114,12 @@ async def play(move, *args, **kwargs):
     Element('scissors-intro').write("Scissors...")
     await asyncio.sleep(.5)
     Element('shoot-intro').write("SHOOT!")
+    await asyncio.sleep(.5)
     <!-- Element("user_move").write(move.capitalize()) -->
     <!-- Element("computer_move").write(computer_move.capitalize()) -->
     document.getElementById('user_move').innerHTML = f"&lt;p&gt;You threw {move.capitalize()}&lt;/p&gt;"
     document.getElementById('computer_move').innerHTML = f"&lt;p&gt;Computer threw {computer_move.capitalize()}&lt;/p&gt;"
-
+    await asyncio.sleep(1.5)
 
     if move.lower() == "rock":
         if computer_move == "rock":

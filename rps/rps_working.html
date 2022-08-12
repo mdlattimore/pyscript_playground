@@ -118,7 +118,7 @@ async def play(move, *args, **kwargs):
     <!-- Element("computer_move").write(computer_move.capitalize()) -->
     document.getElementById('user_move').innerHTML = f"&lt;p&gt;You threw {move.capitalize()}&lt;/p&gt;"
     document.getElementById('computer_move').innerHTML = f"&lt;p&gt;Computer threw {computer_move.capitalize()}&lt;/p&gt;"
-
+    await asyncio.sleep(1)
 
     if move.lower() == "rock":
         if computer_move == "rock":
