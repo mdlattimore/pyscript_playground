@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <!-- PyScript import -->
+    <script defer src='https://pyscript.net/alpha/pyscript.js'></script>
+    <style type='text/css'>
+        body {
+            box-sizing: border-box;
+            margin: 2em 3em;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
+        }
+        h1 {
+            text-align: center;
+        }
+        #result {
+            width: 50%; 
+            overflow-wrap: break-word;
+        }
+        .button {
+            font-size: 1em;
+        }
+        header > p {
+            background-color: lightgray;
+            border-radius: .5em;
+            padding: 1em 1.25em;
+            box-shadow: .5em .5em black;
+            margin-bottom: 1.25em;
+        }
+        footer > p {
+                font-size: .9rem;
+            }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Chained Digit Generator</h1>
+        <p>This so-called "Chained Digit Generator" is a (very) pseudorandom number generator. I've only ever seen it in the book <i>Secret Key Cryptography</i> by Frank Rubin, so I assume it is his invention. As this is a generator that is meant to be carried out with only pencil and paper, it is a very simple algorithm. Starting with an initial value (or seed), digits are appended until the generated number reaches its desired length. To calculate the appended numbers, you start by adding the first and last digits and append the sum to the end of the number. If the sum is greater than or equal to 10, you append only the digit in the 'ones' place. Next you add the second digit to the last and append the result. Then the third digit to the last, and so on. There is an interesting chart in the book to which I would refer you that shows the most likely "period", or length of the generated number up to the point where the seed is repeated, for seeds of lengths 4 - 10 along with the probability that the number will in fact, have that period. Also, seeds comprised entirely of even numbers or entirely of multiples of 5 ('5' and '0') produce unusually short periods.</p>
+    </header>
+
+    <form onsubmit="return false">
+        <label for="seed">Enter Seed Number</label><br>
+        <input type="text" id="seed" name="seed"><br><br>
+        <label for="num_digits">How many digits should the generated number be?</label><br>
+        <input type="text" id="num_digits" name="num_digits"><br><br>
+        <button class="button" type="submit" id="submit" pys-onClick="run">Submit</button><br>
+    </form>
+    <br>
+    <div id='result'></div>
+
+    <footer>
+        <p>For more information about this and other pages built on the PyScript framework, visit my GitHub pages collection <a href="https://mdlattimore.github.io/pyscript_playground" target="_blank">here.</a></p>
+    </footer> 
+
+<py-script>
+
+def run(*args, **kwargs):
+    seed = Element('seed').value
+    num_digits = int(Element('num_digits').value)
+    num = seed
+    idx = 0
+    for n in range (num_digits - len(seed)):
+        next = int(num[idx]) + int(num[-1])
+        if next >= 10:
+            next = next - 10
+        num = f"{num}{next}"
+        idx += 1
+    Element('result').write(num)
+   
+
+
+
+
+</py-script>
+
+</body>
+</html>
