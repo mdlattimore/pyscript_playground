@@ -32,3 +32,6 @@ A quick note on design. These pages don't necessarily use best design practices 
  
 ### [Chained Digit Generator](https://mdlattimore.github.io/pyscript_playground/cdg)
 > This is a so-called "Chained Digit Generator," a (very) pseudorandom number generator. You can read about the details of the underlying algorithm on the page. This page does not demonstrate any new or as-yet unexplored facet of PyScript. Rather, it's just an exercise for me in adapting functions written for other contexts for use in a PyScript driven page.
+
+### [Is It A Prime Number?](https://mdlattimore.github.io/pyscript_playground/isprime)
+> A simple page that determines whether the user-entered number is a prime number.
