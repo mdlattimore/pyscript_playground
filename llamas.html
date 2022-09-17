@@ -1,0 +1,104 @@
+<!-- Changes background color of page in rapid succession (highly irritating).
+All is accomplished with PyScript using imported js module to access js functions-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Ni!</title>
+
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /> -->
+
+    <script defer src="https://pyscript.net/unstable/pyscript.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            margin: 2em;
+        }
+        #buttons {
+            text-align: center;
+        }
+        .btn {
+            margin: .75em;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            color: red;
+            text-align: center;
+        }
+        
+        p {
+            font-weight: bold;
+            width: 90%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        #bob {
+            text-align: center;
+        }
+        #erase3 {
+            font-weight: normal;
+        }
+
+
+    </style>
+
+  </head>
+
+  <body id="main">
+    <h1 id="erase1">Llamas Llamas Everywhere!</h1>
+    <h2 id="erase2">FLASHING LIGHT WARNING</h2>
+    <p id="erase3">This is a page built using the PyScript framework. Its purpose is to demonstrate the ability of PyScript to call JavaScript functions from within the PyScript code (i.e. without reference to separate, standalone JavaScript code). A WORD OF WARNING ... when you press "Start", the page will begin to flash different colors in rapid succession (think the llama credits from Monty Python and the Holy Grail). You can stop the page by clicking the stop button. If you have any sensitivity to bright and/or flashing lights, use caution. You may want to skip this one.
+    <div id="buttons">
+        <button name="button" id="button" type="submit" py-onClick="func('on')" class="btn">Start</button>
+        <button name="button" id="button2" type="submit" py-onClick="func('off')" class="btn">Stop</button>
+    </div>
+
+    <br>
+    <p id="bob"></p>
+    <p id="pam"></p>
+
+<py-script>
+import js
+from js import document
+import asyncio
+
+
+
+
+async def func(status, *args, **kwargs):
+    if status == 'off':
+        js.location.reload();
+
+    Element('erase1').write("&nbsp;")
+    Element('erase2').write("")
+    Element('erase3').write("")
+    
+    # while True:
+    credits = ["<p><i>Executive Producer</i><br>JOHN GOLDSTONE & 'RALPH' THE WONDER LLAMA</p>", "<p><i>Producer</i><br>MARK FORSTATER<br><br><i>Assisted By</i><br>EARL J. LLAMA<br>MILT Q. LLAMA III<br>SY LLAMA<br>MERLE Z. LLAMA IX</p>", "<p><i>Directed by</i><br>40 SPECIALY TRAINED<br>ECUADORAIN MOUNTAIN LLAMAS<br><br>6 VENEZUELAN RED LLAMAS<br><br>142 MEXICAN WHOOPING LLAMAS<br><br>14 NORTH CHILEAN GUANACOS<br>(CLOSELY RELATED TO THE LLAMA)<br><br>REG LLAMA OF BRIXTON<br><br>76000 BATTERY LLAMAS<br>FROM 'LLAMA-FRESH' FARMS LTD. NEAR PARAGUAY<br><br><i>and</i><br><br>TERRY GILLIAM & TERRY JONES</p>"]
+
+
+    # colors = ["AliceBlue", "Azure", "MintCream", "LightCyan"]
+    colors = ["orange", "yellow", "red"]
+    for credit in credits:
+        for n in range(15):
+            for color in colors:
+                document.getElementById('main').style.backgroundColor = color  # this must be handled by JS, PS has no equivalent function to alter CSS
+                await asyncio.sleep(.075)
+                document.getElementById('bob').innerHTML = credit
+    
+                    
+
+
+            
+</py-script>
+
+
+    </body>
+    </html>
