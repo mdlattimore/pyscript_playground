@@ -52,8 +52,9 @@
             text-align: center;
         }
         button {
-            margin-right: .75rem
+            margin-right: .5rem;
         }
+        
 
  
     </style>
@@ -78,19 +79,11 @@
                         </div>
                     </form>  
                     <br>
-                    <div class="row">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-3">
-                            <p id="billlabel"></p>
-                            <p id="tiplabel"></p>
-                            <p id="totallabel"></p>
-                        </div>
-                        <div class="col-sm-3">
-                            <p id="bill" class="nums"></p>
-                            <p id="tip" class="nums"></p>
-                            <p id="total" class="nums"></p> 
-                        </div>
-                    </div>
+
+                            <p id="bill"></p>
+                            <p id="tip"></p>
+                            <p id="total"></p>
+
                              
                 </div>
                 
@@ -103,12 +96,10 @@
                 check = float(Element('check').value)
                 tip = round(check * float(tip_pct), 2)
                 total = check + tip 
-                Element('billlabel').write("Bill:")
-                Element('tiplabel').write("Tip:")
-                Element('totallabel').write("Total")
-                Element('bill').write(f"{check:.2f}")
-                Element('tip').write(f"{tip:.2f}")
-                Element('total').write(f"{total:.2f}")
+
+                Element('bill').write(f"Bill ${check:.2f}")
+                Element('tip').write(f"Tip ${tip:.2f}")
+                Element('total').write(f"Total: ${total:.2f}")
 
         
         </py-script>
