@@ -46,7 +46,7 @@
             color: black;
         }
         .nums {
-            text-align: right;
+            font-weight: bold;
         }
         #button_group {
             text-align: center;
@@ -80,9 +80,9 @@
                     </form>  
                     <br>
 
-                            <p id="bill"></p>
-                            <p id="tip"></p>
-                            <p id="total"></p>
+                            <p id="bill" class="nums"></p>
+                            <p id="tip" class="nums"></p>
+                            <p id="total" class="nums"></p>
 
                              
                 </div>
@@ -97,8 +97,8 @@
                 tip = round(check * float(tip_pct), 2)
                 total = check + tip 
 
-                Element('bill').write(f"Bill ${check:.2f}")
-                Element('tip').write(f"Tip ${tip:.2f}")
+                Element('bill').write(f"Bill: ${check:.2f}")
+                Element('tip').write(f"Tip: ${tip:.2f}")
                 Element('total').write(f"Total: ${total:.2f}")
 
         
