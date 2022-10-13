@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Ni!</title>
+
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /> -->
+
+    <script defer src="https://pyscript.net/unstable/pyscript.js"></script>
+
+    <style>
+        :root {
+            box-sizing: border-box;
+        }
+        
+        *,
+        ::before,
+        ::after {
+            box-sizing: inherit;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
+        }
+
+        body * + * {
+            margin-top: 1.5em;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
+        header {
+            background-color: lightskyblue;
+            padding: 1em;
+        }
+        #main {
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        nav {
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        #display {
+            clear: both;
+        }
+        #register {
+            width: 45%;
+            float: left;
+        }
+
+        #login {
+            width: 45%;
+            float: left;
+        }
+    </style>
+
+  </head>
+
+  <body>
+
+    <header>
+        <h1>Just Another PyScript Page</h1>
+    </header>
+    <nav>Nav Placeholder</nav>
+    <div id="main">
+        <p>A simple registration and login script. If a unregistered user attempts to log in, they are given a "user not found" message. If a registered user enters an incorrect password, they are given a "user name or password incorrect" message. If a new user registers, the user name and password hash (sha256) are stored in a dictionary which persists until the window is closed or refreshed. If a registered user enters the correct user name and password, they are given a welcome message. "Show Users" displays the user/password dictionary in the console.</p>
+        <article>
+            <section id="register">
+                <h3>Register</h3>
+                <form onsubmit="return false">
+                    <label for="user_name">User Name:  </label>
+                        <input type="text" id="new_user_name" name="user_name">
+                    <br>
+                    <label for="password">Password:  </label>
+                        <input type="password" id="new_password" name="password">
+                    <br>
+                    <button type="submit" id="register" py-OnClick="register()">Register</button>
+                </form>
+            </section>
+
+            <section id="login" style="margin-top: 0; margin-left: 3em;">
+                <h3>Log In</h3>
+                <form onsubmit="return false">
+                    <label for="user_name">User Name:  </label>
+                        <input type="text" id="user_name" name="user_name">
+                    <br>
+                    <label for="password">Password:  </label>
+                        <input type="password" id="password" name="password">
+                    <br>
+                    <button type="submit" id="login" py-OnClick="login()">Log In</button>
+                </form>
+                <br>
+                
+            </section>
+        </article>
+        <br>
+        <button type="submit" id="show_users" py-OnClick="show_users()" style="clear:both">Show Users</button>
+        <br>
+        <div id="display"></div>
+
+    </div>
+
+
+
+<py-script>
+import hashlib
+
+
+users = {}
+
+def show_users():
+    console.log(str(users))
+
+def register():
+    user_name = Element('new_user_name').value
+    password = Element('new_password').value
+    bpassword = password.encode('utf-8')
+    hash_pw = hashlib.sha256(bpassword).hexdigest()
+    users[user_name] = hash_pw
+    Element('display').element.innerHTML = f"<br><p>Registration successful. User: {user_name}, Password Hash: {users[user_name]}</p>"
+    console.log(str(users))
+
+def login():
+    user_name = Element('user_name').value
+    password = Element('password').value
+    bpassword = password.encode('utf-8')
+    hash_pw = hashlib.sha256(bpassword).hexdigest()
+    if user_name not in users:
+        Element('display').element.innerHTML = f"<br><p>User not found</p>"
+    else:
+        if users[user_name] == hash_pw:
+            Element('display').element.innerHTML = f"<br><p>Welcome back, {user_name}!</p>"
+        else:
+            Element('display').element.innerHTML = "<br><p>User name or password incorrect.</p>"
+
+</py-script>
+
+
+    </body>
+    </html>
