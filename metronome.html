@@ -1,4 +1,4 @@
-
+<!-- A visual metronome. The first beat of each measure flashes red (color can be changed). User supplies the tempo. Currently works only in 4/4. Future plans include adding time signatures.-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,6 +16,7 @@
             font-family: Arial, Helvetica, sans-serif;
             box-sizing: border-box;
             margin: 2em;
+             background-color: aliceblue;
         }
         #buttons {
             text-align: center;
@@ -79,11 +80,11 @@ async def func(status, *args, **kwargs):
             for beat in beats:
                 if beat == "1":
                     start = time.perf_counter()
-                    Element('main').element.style.backgroundColor = 'grey'
+                    Element('main').element.style.backgroundColor = 'red'
                     Element('main').element.style.color = 'black'
                     Element('display').write(beat)
                     await asyncio.sleep(tempo / 10)
-                    Element('main').element.style.backgroundColor = 'white'
+                    Element('main').element.style.backgroundColor = 'aliceblue'
                     Element('main').element.style.color = 'black'
                     await asyncio.sleep(tempo - (tempo / 10))
                     stop = time.perf_counter()
