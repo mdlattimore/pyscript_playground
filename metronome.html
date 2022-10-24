@@ -82,8 +82,8 @@ async def func(status, *args, **kwargs):
     else:
         bpm = Element('bpm').value
         tempo = 60 / int(bpm)
-        Element('erase1').write("&nbsp;")
-        Element('erase2').write("&nbsp;")
+        Element('erase1').write("")
+        Element('erase2').write("")
         while True:
             for beat in beats:
                 if beat == "1":
