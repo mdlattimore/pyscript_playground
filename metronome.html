@@ -1,0 +1,128 @@
+<!-- Changes background color of page in rapid succession (highly irritating).
+All is accomplished with PyScript using imported js module to access js functions-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Metronome</title>
+
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /> -->
+
+    <script defer src="https://pyscript.net/unstable/pyscript.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            margin: 2em;
+        }
+        #buttons {
+            text-align: center;
+        }
+        .btn {
+            margin: .75em;
+        }
+        h1 {
+            text-align: center;
+        }        
+        p {
+            font-weight: bold;
+            width: 90%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        #bob {
+            text-align: center;
+        }
+        #erase2 {
+            width: 50%;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        #display {
+            text-align: center;
+            font-size: 5em;
+        }
+
+
+    </style>
+
+  </head>
+
+  <body id="main">
+    <h1 id="erase1">Metronome</h1>
+
+    <div id="erase2">
+        <label for="bpm">Enter tempo (bpm):&nbsp;&nbsp;</label>
+        <input type="text" id="bpm" name="bpm" style="outline: solid;"><br>
+    </div>
+    <br>
+    <div id="buttons">
+        <button name="button" id="button" type="submit" py-onClick="func('on')" class="btn">Start</button>
+        <button name="button" id="button2" type="submit" py-onClick="func('off')" class="btn">Stop</button>
+    </div>
+
+    <p id="display"></p>
+
+<py-script>
+import js
+import asyncio
+import time
+
+beats = ["1", "2", "3", "4"]
+
+async def func(status, *args, **kwargs):
+    
+    if status == 'off':
+        js.location.reload();
+    else:
+        bpm = Element('bpm').value
+        tempo = 60 / int(bpm)
+        Element('erase1').write("&nbsp;")
+        Element('erase2').write("&nbsp;")
+        while True:
+            for beat in beats:
+                if beat == "1":
+                    start = time.perf_counter()
+                    Element('main').element.style.backgroundColor = 'grey'
+                    Element('main').element.style.color = 'black'
+                    Element('display').write(beat)
+                    await asyncio.sleep(tempo / 10)
+                    Element('main').element.style.backgroundColor = 'white'
+                    Element('main').element.style.color = 'black'
+                    await asyncio.sleep(tempo - (tempo / 10))
+                    stop = time.perf_counter()
+                    result = stop - start 
+                    console.log(beat, result)
+                else:
+                    start = time.perf_counter()
+                    Element('display').write(beat)
+                    await asyncio.sleep(tempo)
+                    stop = time.perf_counter()
+                    result = stop - start 
+                    console.log(beat, result)
+
+
+
+    # colors = ["AliceBlue", "Azure", "MintCream", "LightCyan"]
+    #colors = ["orange", "yellow", "red"]
+    #for credit in credits:
+     #   for n in range(15):
+      #      for color in colors:
+       #         document.getElementById('main').style.backgroundColor = color  # this must be handled by JS, PS has no equivalent function to alter CSS
+              #  await asyncio.sleep(.075)
+              #  document.getElementById('bob').innerHTML = credit
+    
+                    
+
+
+            
+</py-script>
+
+
+    </body>
+    </html>
