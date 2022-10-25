@@ -16,7 +16,7 @@
             font-family: Arial, Helvetica, sans-serif;
             box-sizing: border-box;
             margin: 2em;
-             background-color: aliceblue;
+            background-color: aliceblue;
         }
         #buttons {
             text-align: center;
@@ -42,6 +42,13 @@
         #display {
             text-align: center;
             font-size: 7em;
+            margin-bottom :0;
+            margin-top: .5em;
+        }
+        #measure {
+            text-align: center;
+            font-size: 3em;
+            color: darkgray;
         }
     </style>
   </head>
@@ -59,6 +66,7 @@
     </div>
 
     <p id="display"></p>
+    <p id="measure"></p>
 
 <py-script>
 import js
@@ -76,28 +84,32 @@ async def func(status, *args, **kwargs):
         tempo = 60 / int(bpm)
         Element('erase1').write("")
         Element('erase2').write("")
+        measure = -1
         while True:
+            Element('measure').write(measure)
+            measure += 1
             for beat in beats:
                 if beat == "1":
                     start = time.perf_counter()
-                    Element('main').element.style.backgroundColor = 'red'
-                    Element('main').element.style.color = 'black'
+                    Element('main').element.style.backgroundColor = 'lightgrey'
+                    Element('main').element.style.color = 'red'
                     Element('display').write(beat)
                     await asyncio.sleep(tempo / 10)
                     Element('main').element.style.backgroundColor = 'aliceblue'
-                    Element('main').element.style.color = 'black'
+                    Element('main').element.style.color = 'red'
                     await asyncio.sleep(tempo - (tempo / 10))
                     stop = time.perf_counter()
                     result = stop - start 
                     console.log(beat, result)
                 else:
                     start = time.perf_counter()
+                    Element('main').element.style.color = 'black'
                     Element('display').write(beat)
                     await asyncio.sleep(tempo)
                     stop = time.perf_counter()
                     result = stop - start 
                     console.log(beat, result)
-
+            
 </py-script>
 
   </body>
