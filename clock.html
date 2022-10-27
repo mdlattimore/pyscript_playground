@@ -20,7 +20,7 @@
         transform: translate(-50%, -50%);
     }
     #time {
-        font-size: 6.5em;
+        font-size: 5.5em;
         text-align: center;
     }
     #date{
@@ -42,7 +42,7 @@ import asyncio
 
 while True:
     now = datetime.now()
-    time_display = now.strftime("%H:%M:%S")
+    time_display = now.strftime("%I:%M:%S %p")
     date_display = now.strftime("%A, %m/%d/%Y")
     Element('time').write(time_display)
     Element('date').write(date_display)
