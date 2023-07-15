@@ -16,6 +16,7 @@ def play():
     win = 0
     loss = 0
     if number > 0:
+        if number > 1000000: number = 1000000
         for _ in range(number):
             choices = [1, 2, 3]
             car = choices.pop(randint(0, 2))
