@@ -24,6 +24,8 @@ def roll_dice():
         combined += "\n         SNAKE EYES!".center(30)
     elif die1 == die2:
         combined += "\n           DOUBLES!".center(30)
+    else:
+        combined += "\n\n"
 
     results.element.innerHTML = f"<pre>{combined}</pre>"
 
