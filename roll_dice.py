@@ -8,7 +8,7 @@ def roll_dice():
     # global roll_list
     die1 = random.randint(1, 6)
     die2 = random.randint(1, 6)
-    print()
+
     # interleave dice[die1] and dice[die2] by index to display dice side by side. Use rstrip() to strip the newline character
     combined = f"""\
     {dice[die1][0:10].rstrip()}   {dice[die2][0:10].rstrip()}
