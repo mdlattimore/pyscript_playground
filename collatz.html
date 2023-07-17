@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Collatz Conjecture</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        body {
+            padding:10px 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Collatz Conjecture</h1>
+    <h2>(aka 3x + 1 problem)</h2>
+    <p>The Collatz conjecture is one of the most famous unsolved problems in mathematics. The conjecture asks whether repeating two simple arithmetic operations will eventually transform every positive integer into 1. It concerns sequences of integers in which each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that these sequences always reach 1, no matter which positive integer is chosen to start the sequence (Taken from Wikipedia. See the <a href="https://en.wikipedia.org/wiki/Collatz_conjecture" target="blank">Collatz conjecture</a> Wikipedia entry).</p> 
+    <p>While no positive integer has ever been tested that doesn't eventually reach 1, a formal proof of the conjecture has eluded (and continues to elude) mathematicians since Lothar Collatz proposed the problem in 1937. It's sometimes described as "the most dangerous problem in mathematics. For an informative and entertaining look at Collatz, check out this video: <a href="https://www.youtube.com/watch?v=094y1Z2wpJg", target="blank">The Simplest Math Problem No One Can Solve - Collatz Conjecture</a>.</p>
+
+    <p>Enter a positive integer in the field below and click "Go" to see the result of each step in the algorithm when starting from the given number. The largest collatz sequence with a starting number under 1,000,000 begins with 837799.</p>
+        
+   
+
+
+
+    <label for="number">Enter number:&nbsp;&nbsp;</label>
+    <input name="number" id="number" placeholder="Enter starting number" style="margin-right:10px" onfocus="this.value=''"/>
+    <button id="count" py-click="collatz()">Go!</button>
+    <br><br>
+    <div id="results"></div>
+    <br>
+    <p>This page was built using the PyScript framework. See <a href="https://pyscript.net" target="blank">PyScript.net</a> for more information.</p>
+    
+    <py-config src="./pyscript.toml"></py-config>
+    <py-script src="./collatz_function.py"></py-script>
+</body>
+</html>
