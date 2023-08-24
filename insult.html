@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Shakespearean Insults!</title>
         <!-- PyScript import -->
-        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+        <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
         <style>
             h1 {
                 text-align: center;
@@ -22,6 +22,7 @@
         <br><br><br><br><br>
         <h1 id="main"></h1>
         
+       
 <py-script>
 
 import random
@@ -37,6 +38,8 @@ display = f"You {adj} {noun}!"
 Element("main").write(display)
 
 </py-script>
+
+    <py-config src="./pyscript.toml"></py-config>
 
     </body>
 
