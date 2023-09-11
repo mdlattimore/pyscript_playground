@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weather</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+</head>
+<body">
+    <button py-click="display_history()">Display Barometric Pressure History</button>
+    <div id="display_temps"></div>
+    <div id="display_pressure"></div>
+    <py-config src="./pyscript_weather.toml"></py-config>
+    <py-script src="./main_weather.py"></py-script>
+</body>
+</html>

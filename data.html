@@ -1,0 +1,24 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+      <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+
+  <body>
+    <h1>Let's plot random numbers</h1>
+    <div id="plot"></div>
+    <py-config type="toml">
+        packages = ["numpy", "matplotlib"]
+
+        paths = ["data.py"]
+    </py-config>
+    <py-script output="plot">
+      import matplotlib.pyplot as plt
+      from data import make_x_and_y
+      x, y = make_x_and_y(n=1000)
+      fig, ax = plt.subplots()
+      ax.scatter(x, y)
+      fig
+    </py-script>
+  </body>
+</html>
