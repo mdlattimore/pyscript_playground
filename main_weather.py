@@ -49,11 +49,13 @@ def plot_temps(times, temps):
 
 def plot_pressures(times, pressures):
     """Create plot of barometric pressures over the last 24 hours"""
+    plt.figure(figsize=(10,6))
     plt.plot(times, pressures)
     plt.title("Barometric Pressure History")
     plt.xlabel("Time")
     plt.ylabel("Pressure")
     plt.xticks(rotation=90)
+    
     plt.subplots_adjust(left=.12, right=1, bottom=.485)
     plt.grid()
     display(plt, target="display_pressure")
