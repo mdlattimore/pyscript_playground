@@ -9,11 +9,11 @@ pyodide_http.patch_all()
 STATION = "KCLT"
 
 def capture_historical_data():
-    """Function to capture the last 24 hours of weather data (currently) from the CLT airport station"""
+    """Function to capture the last 36 hours of weather data (currently) from the CLT airport station"""
     # NWS api reports data using UTC time. The following 4 lines create a current datetime object (in utc), calculates the time 24 hours earlier, converts both to isoformat, then edits the isoformat to match the NWS api's expected parameter format
     now = dt.utcnow()
     zulu_now_raw = (now).isoformat()
-    zulu_then_raw = (now + td(days=-1)).isoformat()
+    zulu_then_raw = (now + td(hours=-36)).isoformat()
     zulu_now = zulu_now_raw.replace(zulu_now_raw[19:], "Z")
     zulu_then = zulu_then_raw.replace(zulu_then_raw[19:], "Z")
    
