@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kaprekar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+  
+</head>
+<body>
+    <h1 style="text-align: center;">Kaprekar's Constant</h1>
+    <div style="margin-left: 15%; margin-right: 15%">
+        <p>The number 6174 is known as Kaprekar's constant after the Indian mathematician D. R. Kaprekar. This number is renowned for the following rule:</p>
+        <ol type="1">
+            <li>Take any four-digit number, using at least two different digits (leading zeros are allowed).</li>
+            <li>Arrange the digits in descending and then in ascending order to get two four-digit numbers, adding leading zeros if necessary.</li>
+            <li>Subtract the smaller number from the bigger number.</li>
+            <li>Go back to step 2 and repeat.</li>
+          </ol>
+        <p>The above process, known as Kaprekar's routine, will always reach its fixed point, 6174, in at most 7 iterations. Once 6174 is reached, the process will continue yielding 7641 – 1467 = 6174.&#42; Numbers consisting of four identical digits will yield 0, but all other will eventually yield 6174.</p>
+        <p>Give it a go. Enter any 4 digit number containing at least 2 different digits and see the process.</p>
+        <form onsubmit="return false">
+            <label for="number">Enter number: </label>
+            <input type="text" id="number" name="number" maxlength="4" style="margin-left: 10px">
+            <button class="button" id="submit_btn" type="submit" py-click="kaprekar()" style="margin-left: 20px">Go</button>
+        </form>
+        <br>
+        <div id="auto_display"></div>
+        <br>
+        <br>
+        <p>&#42;From <a href="https://en.wikipedia.org/wiki/6174">Wikipedia</a></p>
+        </div>
+    
+    <py-config src="./kaprekar.toml"></py-config>
+    <py-script src="./kaprekar_main.py"></py-script>
+</body>
+</html>
