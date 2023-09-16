@@ -37,5 +37,6 @@ def draw():
     x, y = zip(*points)
     plt.title(f"{num_dots} Dots")
     plt.scatter(x, y, s=1)
-    
     display(plt, target="display", append=False) # set append to False to clear div before displaying new plot
+    # close figure, otherwise figs will remain in memory
+    plt.close(fig)
