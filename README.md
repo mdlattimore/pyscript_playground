@@ -13,7 +13,7 @@ A quick note on design. These pages don't necessarily use best design practices 
 > Search for a dog breed to access basic information. Information is taken from api at <a href="https://thedogapi.com">The Dog API.</a> I wrote this in order to practice/figure out how to work with an external web content. Ordinarily, one would use something like the ```requests``` library to interact with internet content using Python. However, for security reasons, browsers don't support the connection protocols used by these Python libraries. PyScript does provide a wrapper for JavaScript's ```fetch``` function (called, predicably PyFetch) that does allow the program to access internet content. This page was my first attempt at using that wrapper. 
     
 ### [Simple Encryption](https://mdlattimore.github.io/pyscript_playground/encrypt)  
-> Takes user text input then encrypts it using a Fernet cipher (It displays both the key and the encrypted text. DO NOT use for any real-world application). The encryption is handled by the third party 'cryptography' library, available at <a href="https://pypi.org">Pypi.org</a>. The code demonstrates PyScript's ability to use third party libraries using PyScript's ```<env>``` tag. NOTE: not all third party libraries work with PyScript. Generally speaking, compatible third party libraries are those that have been compiled to run with Pyodide. A list of compatible libraries can be found <a href="https://github.com/pyodide/pyodide/tree/main/packages">here.</a>  
+> Takes user text input then encrypts it using a Fernet cipher (It displays both the key and the encrypted text. DO NOT use for any real-world application). The encryption is handled by the third party 'cryptography' library, available at <a href="https://pypi.org">Pypi.org</a>. The code demonstrates PyScript's ability to use third party libraries using PyScript's ```<env>``` tag[NOW DEPRECATED]. NOTE: not all third party libraries work with PyScript. Generally speaking, compatible third party libraries are those that have been compiled to run with Pyodide. A list of compatible libraries can be found <a href="https://github.com/pyodide/pyodide/tree/main/packages">here.</a>  
 
 ### [Simple Hash Function](https://mdlattimore.github.io/pyscript_playground/hashing)  
 > Uses Python's hashlib module (in the standard library) to generate a sha-256 hash for user-supplied input.  
@@ -35,3 +35,18 @@ A quick note on design. These pages don't necessarily use best design practices 
 
 ### [Is It A Prime Number?](https://mdlattimore.github.io/pyscript_playground/isprime)
 > A simple page that determines whether the user-entered number is a prime number.
+
+### [Roll the Dice](https://mdlattimore.github.com.io/dice)  
+> Just rolls two ascii dice.  
+
+### [Collatz Conjecture](https://mdlattimore.github.com.io/collatz)  
+> A simple demonstration of the Collatz Conjecture (aka the 3x + 1 problem). Read more about it on the page.
+
+### [Shakespearean Insult Generator](https://mdlattimore.github.com.io/insult)  
+> A Shakespearean insult generator because clearly, the internet needs another one. Whatever ...  
+
+### [Kaprekar's Constant](https://mdlattimore.github.com.io/kaprekar)  
+> This one is pretty interesting. The idea is that you can take any 4 digit number that is made up of at least two distinct digits (in other words, not 4 identical digits, e.g. 1111, 2222), apply a set of rules to the number, apply the same set of rules to the result, and so on until the calculations yield Kaprekar's Constant: 6174 (which will, when applying the rule set, yield itself, 6174 ad infinitum). It takes, at most, 7 steps to get to 6174. Read more on the page.
+
+### [Sierpinski Triangle](https://mdlattimore.github.com.io/sierpinski)  
+> This one is cool on a couple of levels. The page tells you a little about the Sierpinski Triangle (so read about it there). As far as demonstrating the abilities of PyScript, this page uses the third-party Matplotlib plotting library to draw the triangle. 
