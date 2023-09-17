@@ -36,17 +36,17 @@ A quick note on design. These pages don't necessarily use best design practices 
 ### [Is It A Prime Number?](https://mdlattimore.github.io/pyscript_playground/isprime)
 > A simple page that determines whether the user-entered number is a prime number.
 
-### [Roll the Dice](https://mdlattimore.github.com.io/dice)  
+### [Roll the Dice](https://mdlattimore.github.com.io/pyscript_playground/dice)  
 > Just rolls two ascii dice.  
 
-### [Collatz Conjecture](https://mdlattimore.github.com.io/collatz)  
+### [Collatz Conjecture](https://mdlattimore.github.com.io/pyscript_playground/collatz)  
 > A simple demonstration of the Collatz Conjecture (aka the 3x + 1 problem). Read more about it on the page.
 
-### [Shakespearean Insult Generator](https://mdlattimore.github.com.io/insult)  
+### [Shakespearean Insult Generator](https://mdlattimore.github.com.io/pyscript_playground/insult)  
 > A Shakespearean insult generator because clearly, the internet needs another one. Whatever ...  
 
-### [Kaprekar's Constant](https://mdlattimore.github.com.io/kaprekar)  
+### [Kaprekar's Constant](https://mdlattimore.github.com.io/pyscript_playground/kaprekar)  
 > This one is pretty interesting. The idea is that you can take any 4 digit number that is made up of at least two distinct digits (in other words, not 4 identical digits, e.g. 1111, 2222), apply a set of rules to the number, apply the same set of rules to the result, and so on until the calculations yield Kaprekar's Constant: 6174 (which will, when applying the rule set, yield itself, 6174 ad infinitum). It takes, at most, 7 steps to get to 6174. Read more on the page.
 
-### [Sierpinski Triangle](https://mdlattimore.github.com.io/sierpinski)  
+### [Sierpinski Triangle](https://mdlattimore.github.com.io/pyscript_playground/sierpinski)  
 > This one is cool on a couple of levels. The page tells you a little about the Sierpinski Triangle (so read about it there). As far as demonstrating the abilities of PyScript, this page uses the third-party Matplotlib plotting library to draw the triangle. 
