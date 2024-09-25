@@ -1,4 +1,4 @@
-# Introduction (you may want to pause the video"
+# Introduction (you may want to pause the video)
 
 Please ignore the "pyscript_playground" at the top of these pages. I could tell you why it's there, but you'd be asleep before I finished and I don't have the time to remove it.
 
