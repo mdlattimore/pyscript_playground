@@ -1,4 +1,4 @@
-
+# Pyscript Playground
 This is a collection of simple scripts written using the recently released PyScript framework which allows Python code to be executed locally, entirely within the browser. I am only slightly more knowledgeable than a beginner, so nothing in here is particularly complex (compared with the work of experienced developers, this is rank amateurism on display). However, the entire point of PyScript is to bring programming to the 99%. I'm one of that group. 
 
 These scripts are in various stages of development (translation: Some might work. Some might not). If you're interested, the repo containing these scripts (and more detritus) can be found <a href="https://github.com/mdlattimore/pyscript_playground">here</a> and the PyScript repository can be found <a href="https://github.com/pyscript/pyscript">here.</a>
